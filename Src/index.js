@@ -45,6 +45,36 @@ const renderListProduct = (data) => {
   addEventListeners(data)
 };
 /**
+ * Select Type
+ */
+const filterProduct = (type) => {
+  // Gọi API để lấy toàn bộ danh sách sản phẩm
+  axios({
+    url: "https://67563d2e11ce847c992c3910.mockapi.io/api/Products",
+    method: "GET",
+  })
+    .then((result) => {
+      // Lọc danh sách sản phẩm dựa trên loại
+      const filteredProducts = result.data.filter((product) => {
+        if (type === "") {
+          // Nếu không chọn loại nào thì trả về toàn bộ sản phẩm
+          return true;
+        }
+        return product.type === type;
+      });
+
+      // Gọi hàm render để hiển thị danh sách sản phẩm đã lọc
+      renderListProduct(filteredProducts);
+    })
+    .catch((error) => {
+      console.error("Lỗi khi lọc sản phẩm:", error);
+    });
+};
+getEleId("LoaiSP").addEventListener("change",()=>{
+  const selectedType = getEleId("LoaiSP").value
+  filterProduct(selectedType);
+})
+/**
  * Cart
  */
 let cart = [];
@@ -246,7 +276,7 @@ if (checkoutButton) {
  */
 const fetchListProduct = () => {
   const promise = axios({
-    url: "https://676199c546efb37323725008.mockapi.io/Api/Products",
+    url: "https://67563d2e11ce847c992c3910.mockapi.io/api/Products",
     method: "GET",
   });
 
@@ -260,3 +290,4 @@ const fetchListProduct = () => {
     });
 };
 fetchListProduct();
+

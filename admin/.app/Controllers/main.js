@@ -11,18 +11,18 @@ const renderListProduct = (data)=>{
         <tr>
         <td>${i+1}</td>
         <td>${name}</td>
-        <td>${price}</td>
+        <td>$${price}</td>
         <td>${screen}</td>
         <td>${backCamera}</td>
         <td>${frontCamera}</td>
         <td>
-            <img src="${img}" width="50px" height="50px">
+            <img src="../img/${img}" width="50px" height="50px">
         </td>
         <td>${desc}</td>
-        <td>${type === "iphone" ? "Iphone" : "Samsung"}</td>
+        <td>${type === "Iphone" ? "Iphone" : "Samsung"}</td>
         <td>
         <button class="btn btn-info" onclick="handleDelete('${id}')">Delete</button>
-        <button class="btn btn-danger" data-toggle="modal" data-target="#myModal" onclick="handleEdit('${id}')">Edit</button>
+        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal" onclick="handleEdit('${id}')">Edit</button>
         </td>
         </tr>
         `;

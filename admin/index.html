@@ -134,6 +134,7 @@
               <!-- BEGIN TÌM KIẾM -->
               <div class="input-group mb-3">
                 <input
+                id="searchName"
                   type="text"
                   class="form-control"
                   placeholder="Nhập từ khóa"
@@ -154,16 +155,22 @@
             <!-- BEGIN TABLE SẢN PHẨM -->
             <table class="table table-bordered">
               <thead>
-                <th scope="col">STT</th>
-                <th scope="col">Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Screen</th>
-                <th scope="col">BackCamera</th>
-                <th scope="col">FrontCamera</th>
-                <th scope="col">Image</th>
-                <th scope="col">Desc</th>
-                <th scope="col">Type</th>
-                <th scope="col">Action</th>
+                <th>STT</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Giá
+                  <select id="sortPrice" class="form-control" style="width: 120px;">
+                    <option value="filter">Lọc theo giá</option>
+                    <option value="asc">Từ bé đến lớn</option>
+                    <option value="desc">Từ lớn đến bé</option>
+                  </select>
+                </th>
+                <th>Screen</th>
+                <th>BlackCamera</th>
+                <th>FrontCamera</th>
+                <th>Hình Ảnh</th>
+                <th>Mô Tả</th> 
+                <th>Loại</th>               
+                <th>Action</th>
               </thead>
               <tbody id="tblDanhSachSP">
               </tbody>
@@ -190,6 +197,7 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body">
+              <form id="formProduct">
               <div class="form-group">
                 <label>Name</label>
                 <input
@@ -198,6 +206,7 @@
                   placeholder="Nhập vào tên sản phẩm"
                 />
               </div>
+              <span class="sp-thongbao" id="tbTenSP"></span>
               <div class="form-group">
                 <label>Price</label>
                 <input
@@ -206,6 +215,7 @@
                   placeholder="Nhập vào giá"
                 />
               </div>
+              <span class="sp-thongbao" id="tbGiaSP"></span>
               <div class="form-group">
                 <label>Screen</label>
                 <input
@@ -214,6 +224,7 @@
                   placeholder="Nhập vào Screen sản phẩm"
                 />
               </div>    
+              <span class="sp-thongbao" id="tbScreenSP"></span>
               <div class="form-group">
                 <label>FrontCamera</label>
                 <input
@@ -222,6 +233,7 @@
                   placeholder="Nhập vào FrontCamera"
                 />
               </div>
+              <span class="sp-thongbao" id="tbFrontCameraSP"></span>   
               <div class="form-group">
                 <label>BackCamera</label>
                 <input
@@ -229,7 +241,8 @@
                   class="form-control"
                   placeholder="Nhập vào BackCamera"
                 />
-              </div>    
+              </div>   
+              <span class="sp-thongbao" id="tbBackCameraSP"></span> 
               <div class="form-group">
                 <label>Img</label>
                 <input
@@ -238,19 +251,22 @@
                   placeholder="Nhập vào hình sản phẩm"
                 />
               </div>
+              <span class="sp-thongbao" id="tbHinhSP"></span>
               <div class="form-group">
                 <label for="">Desc</label>
                 <textarea name="" id="MoTa" class="form-control"></textarea>
               </div>
             </div>
             <div class="form-group">
-              <label>Type</label>
-              <select class="form-control">
-                <option value="">Chọn loại sản phẩm</option>
-                <option value="Iphone">Iphone</option>
-                <option value="Samsung">Samsung</option>
+              <label>Loại</label>
+              <select id="LoaiSP">
+                  <option value="">Chọn loại</option>
+                  <option value="Iphone">Iphone</option>
+                  <option value="Samsung">Samsung</option>
               </select>
             </div>
+            <span class="sp-thongbao" id="tbLoaiSP"></span>
+          </form>
             <!-- Modal footer -->
             <div class="modal-footer"></div>
           </div>
